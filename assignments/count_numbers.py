@@ -1,4 +1,4 @@
-inputvalue = input() #enter comma seperated intergers
+inputvalue = input('enter comma seperated intergers:- ') #enter comma seperated intergers
 lst = inputvalue.split(',')
 even = 0
 odd = 0
