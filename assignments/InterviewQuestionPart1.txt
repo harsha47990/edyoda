@@ -1,0 +1,87 @@
+1)	What is Python? What are the benefits of using Python?
+Python is a high-level, interpreted, general-purpose programming language. Being a general-purpose language, it can be used to build almost any type of application with the right tools/libraries. Additionally, python supports objects, modules, threads, exception-handling, and automatic memory management which help in modelling real-world problems and building applications to solve these problems.
+Benefits of using Python:
+Python is a general-purpose programming language that has a simple, easy-to-learn syntax that emphasizes readability and therefore reduces the cost of program maintenance. Moreover, the language is capable of scripting, is completely open-source, and supports third-party packages encouraging modularity and code reuse.
+Its high-level data structures, combined with dynamic typing and dynamic binding, attract a huge community of developers for Rapid Application Development and deployment.
+
+2)	What are lists and tuples? What is the key difference between the two?
+Lists and Tuples are both sequence data types that can store a collection of objects in Python. The objects stored in both sequences can have different data types. Lists are represented with square brackets ['sara', 6, 0.19], while tuples are represented with parantheses ('ansh', 5, 0.97).
+But what is the real difference between the two? The key difference between the two is that while lists are mutable, tuples on the other hand are immutable objects. This means that lists can be modified, appended or sliced on the go but tuples remain constant and cannot be modified in any manner. 
+
+3)	 What are the common built-in data types in Python?
+Numeric Types:
+There are three distinct numeric types - integers, floating-point numbers, and complex numbers. Additionally, booleans are a sub-type of integers.
+Sequence Types:
+lists, tuples, and range objects. Sequence types have the in and not in operators defined for their traversing their elements. These operators share the same priority as the comparison operations.
+Unordered Sequence Types:
+Sets and Dictionary are unordered data structure.
+
+4)	What are python operators?
+Arithmetic operators:-  +,-,*,/,//,%
+Relation Operators:- <,>, <=, >=, = , !=
+Logical Operator :- or, and
+Membership Operator :- in, not in
+Identity Operator :- is, is not
+Bitwise Operator :- &, | , ^, ~, << , >> 
+
+5)	What is break, continue and pass in Python?
+Break keyword is used to stop the execution and break out of the loop.
+Continue keyword is used to skip the iteration of the loop.
+Pass keyword represents a null operation in python.  It is generally used for the purpose of filling up empty blocks of code which may execute during runtime but has yet to be written.
+
+6)	What the default return value for function if nothing explicitly returned?
+That default return value will always be None . If you don't supply an explicit return statement with an explicit return value, then Python will supply an implicit return statement using None as a return value.
+
+7)	Can function return multiple values?
+Yes, in python we can return multiple values, we can return in as tuple with packing or without packing.
+
+8)	How to Pass list or any other sequence type to function as pass by value?
+We can pass by creating duplicate copy of the variable, for example list duplicate can done using copy() function or by using slicing such as [:].
+
+9)	 What are negative indexes and why are they used?
+Negative indexes are the indexes from the end of the list or tuple or string, Arr[-1] means the last element of array Arr[]
+
+10)	What is the difference between Python Arrays and lists?
+Arrays in python can only contain elements of same data types i.e., data type of array should be homogeneous. It is a thin wrapper around C language arrays and consumes far less memory than lists.
+Lists in python can contain elements of different data types i.e., data type of lists can be heterogeneous. It has the disadvantage of consuming large memory.
+
+11)	What does *args and **kwargs mean?
+*args is a special syntax used in the function definition to pass variable-length arguments.
+“*” means variable length and “args” is the name used by convention. You can use any other.
+**kwargs is a special syntax used in the function definition to pass variable-length keyworded arguments.
+Keyworded argument means a variable that has a name when passed to a function.
+It is actually a dictionary of the variable names and its value.
+
+12)	Which conditional statements are available in Python ?
+If, if-else, for, while.
+
+13)	What are mutable datatypes in python?
+a.	List
+b.	Sets
+c.	Dictionaries
+
+14)	 What are non-mutable datatypes in python?
+a.	Strings
+b.	Tuples
+c.	Numbers
+
+15)	Does Set is a ordered data type ? and does it allow duplicates ?
+Set is not an ordered data structure, and set doesn’t allow duplicates.
+
+16)	Can I add elements into a list present inside a tuple?
+Yes, we can add elements into the list present inside tuple.
+
+17)	Can we have mutable data types as dictionary keys?
+No, we can only have non mutable data types as keys.
+
+18)	Can we Index Set ?
+No, set cannot be indexed. Set is an unordered data structure.
+
+19)	Which operator can be used to compare two values?
+==  (double equal to)
+
+20)	What operator is used to check the memory address of both variable is same or not?
+is operator
+
+21)	What is Recursive Functions?
+A recursive function is a function defined in terms of itself via self-referential expressions. This means that the function will continue to call itself and repeat its behavior until some condition is met to return a result.
