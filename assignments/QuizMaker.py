@@ -64,8 +64,15 @@ class User:
             if option == '1':
                 self.WriteQuiz()
             if option == '2':
-                print('you last quiz score is:',self.scorelist[self.username])
+                if self.username in self.scorelist:
+                    print('you last quiz score is:',self.scorelist[self.username])
+                else:
+                    print("No quiz taken")
+            input('enter to continue....')
+
     def WriteQuiz(self):
+        self.score = 0
+        completed = []
         temp = self.QuizPaper.copy()
         if self.count > 0:
             qno = 1
@@ -74,28 +81,30 @@ class User:
                     if qno > self.count:
                         break
                     if random.randint(0,1) == 1:
-                        print("{0}) {1}".format(qno,ques))
-                        qno += 1
-                        ans = ""
-                        if len(self.QuizPaper[ques]) == 1:
-                            print("1) True")
-                            print("2) False")
-                            choice = input("enter option no (1,2): ")
-                            if choice == '1':
-                               ans = 'true'
-                            if choice == '2':
-                                ans = 'false'
-                            if self.QuizPaper[ques][0].lower() == ans:
-                                self.score += 1
-                        else:
-                            print("1) {0}".format(self.QuizPaper[ques][0]))
-                            print("2) {0}".format(self.QuizPaper[ques][1]))
-                            print("3) {0}".format(self.QuizPaper[ques][2]))
-                            print("4) {0}".format(self.QuizPaper[ques][3]))
-                            choice = input("enter option no (1,2.3.4): ")
+                        if ques not in completed:
+                            completed.append(ques)
+                            print("{0}) {1}".format(qno,ques))
+                            qno += 1
+                            ans = ""
+                            if len(self.QuizPaper[ques]) == 1:
+                                print(" 1) True")
+                                print(" 2) False")
+                                choice = input("enter option no (1,2): ")
+                                if choice == '1':
+                                   ans = 'true'
+                                if choice == '2':
+                                    ans = 'false'
+                                if self.QuizPaper[ques][0].lower() == ans:
+                                    self.score += 1
+                            else:
+                                print(" 1) {0}".format(self.QuizPaper[ques][0]))
+                                print(" 2) {0}".format(self.QuizPaper[ques][1]))
+                                print(" 3) {0}".format(self.QuizPaper[ques][2]))
+                                print(" 4) {0}".format(self.QuizPaper[ques][3]))
+                                choice = input("enter option no (1,2.3.4): ")
 
-                            if self.QuizPaper[ques][4].lower() == choice:
-                                self.score += 1
+                                if self.QuizPaper[ques][4].lower() == choice:
+                                    self.score += 1
             print("test completed")
             self.scorelist[self.username] = self.score
             with open('scorelist.txt','w') as f:
