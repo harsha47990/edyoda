@@ -106,7 +106,9 @@ for i in s:
                 print('bracket missing')
 if l != []:
     print('bracket missing')
-
+else:
+    print('expression is valid')
+  
 #question 9
 stack = list(map(int,input("enter space seperated integeres").split()))
 
