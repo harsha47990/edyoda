@@ -25,10 +25,16 @@ print(s1[::-1] == s2)
 
 #question 4
 from collections import Counter
-a = 'abcdbcd'
+a = 'aabbbcccddd'
 b = Counter(a)
+min = 0
+for k in b:
+    if min == 0:
+        min = b[k]
+    if b[k] < min:
+        min = b[k]
 for i in a:
-    if b[i] == 1:
+    if b[i] == min:
         print(i)
         break
 
