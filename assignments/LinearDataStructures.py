@@ -10,8 +10,13 @@ for i in range(len(lst)):
             
 #question 2
 ary = [1,2,3,4,5,6]
-ary.reverse()
+n = len(ary)
+for i in range(n//2):
+    temp = ary[i]
+    ary[i] = ary[n-1-i]
+    ary[n-1-i] = temp
 print(ary)
+
 
 #question 3
 s1 = "check"
