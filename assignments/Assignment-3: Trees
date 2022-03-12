@@ -1,0 +1,269 @@
+
+#1. Implement Binary tree
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+    def insert(self, data):
+        if data < self.data:
+            if self.left is None:
+                self.left = Node(data)
+            else:
+                self.left.insert(data)
+        elif data > self.data:
+            if self.right is None:
+                self.right = Node(data)
+            else:
+                self.right.insert(data)
+
+    def display(self):
+        if self.left:
+            self.left.display()
+        print(self.data, end=' ')
+        if self.right:
+            self.right.display()
+
+
+def height(node):
+    if node is None:
+        return -1
+    else:
+        ld = height(node.left)
+        rd = height(node.right)
+        if (ld > rd):
+            return ld + 1
+        else:
+            return rd + 1
+
+
+def printinorder(rootnode):
+    if rootnode:
+        printinorder(rootnode.left)
+        print(rootnode.data, end=' ')
+        printinorder(rootnode.right)
+
+
+def printpostorder(rootnode):
+    if rootnode:
+        printpostorder(rootnode.left)
+        printpostorder(rootnode.right)
+        print(rootnode.data, end=' ')
+
+
+def printpreorder(rootnode):
+    if rootnode:
+        print(rootnode.data, end=' ')
+        printpreorder(rootnode.left)
+        printpreorder(rootnode.right)
+
+
+def printleafnodes(rootnode):
+    if not rootnode:
+        return
+    if not rootnode.left and not rootnode.right:
+        print(rootnode.data, end=" ")
+        return
+    if rootnode.left:
+        printleafnodes(rootnode.left)
+
+    if rootnode.right:
+        printleafnodes(rootnode.right)
+
+rootnode = Node(5)
+rootnode.insert(4)
+rootnode.insert(8)
+rootnode.insert(1)
+rootnode.insert(6)
+rootnode.insert(2)
+rootnode.insert(9)
+rootnode.display()
+
+print()
+#1. Find height of a given tree
+
+print("height is",height(rootnode))
+
+#3. Perform Pre-order, Post-order, In-order traversal
+
+print("inorder: ")
+printinorder(rootnode)
+print()
+print("post order: ")
+printpostorder(rootnode)
+print()
+print("pre order: ")
+printpreorder(rootnode)
+print()
+#4. Function to print all the leaves in a given binary tree
+
+print("leaf nodes: ")
+printleafnodes(rootnode)
+
+print()
+#5. Implement BFS (Breath First Search) and DFS (Depth First Search)
+
+def BFS(rootnode, num):
+    if rootnode is None:
+        return
+    queue = []
+    queue.append(rootnode)
+
+    while (len(queue) > 0):
+        if queue[0].data == num:
+            print('element found', num)
+            return
+        node = queue.pop(0)
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+
+    print('element not found')
+
+
+BFS(rootnode, 8)
+BFS(rootnode, 10)
+
+found = False
+
+
+def DFS(rootnode, num):
+    if rootnode:
+        if rootnode.data == num:
+            print('element found', rootnode.data)
+            global found
+            found = True
+        DFS(rootnode.left, num)
+        DFS(rootnode.right, num)
+
+
+DFS(rootnode, 10)
+if found != True:
+    print('element not found')
+
+#6. Find sum of all left leaves in a given Binary Tree
+
+
+def checkisleaf(node):
+    if node is None:
+        return False
+    if node.left is None and node.right is None:
+        return True
+    else:
+        return False
+
+
+def sumleft(rootnode):
+    sum = 0
+    if rootnode is not None:
+
+        if checkisleaf(rootnode.left):
+            sum += rootnode.left.data
+        else:
+            sum += sumleft(rootnode.left)
+        sum += sumleft(rootnode.right)
+    return sum
+
+
+print('sum of all left leaves', sumleft(rootnode))
+
+#7. Find sum of all nodes of the given perfect binary tree
+
+
+def sumofallnodes(rootnode):
+    sum = 0
+    if rootnode is None:
+        return
+    queue = []
+    queue.append(rootnode)
+
+    while (len(queue) > 0):
+        sum += queue[0].data
+        node = queue.pop(0)
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+    return sum
+
+
+print('sum of all nodes', sumofallnodes(rootnode))
+
+#8. Count subtress that sum up to a given value x in a binary tree
+
+
+def countsubtree(rootnode, count, x):
+    if (not rootnode):
+        return 0
+
+    ls = countsubtree(rootnode.left, count, x)
+    rs = countsubtree(rootnode.right, count, x)
+    Sum = ls + rs + rootnode.data
+    if (Sum == x):
+        count[0] += 1
+    return Sum
+
+
+def countsubtreessum(rootnode, x):
+    if (not rootnode):
+        return 0
+    count = [0]
+    ls = countsubtree(rootnode.left, count, x)
+
+    rs = countsubtree(rootnode.right, count, x)
+
+    if ((ls + rs + rootnode.data) == x):
+        count[0] += 1
+
+    return count[0]
+
+
+countsubtreessum(rootnode, 23)
+
+#9. Find maximum level sum in Binary Tree
+
+
+def bearthsum(rootnode):
+    if (rootnode == None):
+        return 0
+
+    result = rootnode.data
+    q = []
+    q.append(rootnode)
+
+    while (len(q) > 0):
+        count = len(q)
+        sum = 0
+        while (count > 0):
+
+            temp = q[0]
+            del q[0]
+            sum = sum + temp.data
+            if (temp.left != None):
+                q.append(temp.left)
+            if (temp.right != None):
+                q.append(temp.right)
+
+            count -= 1
+        result = max(sum, result)
+
+    return result
+
+
+print("Maximum level sum", bearthsum(rootnode))
+
+#10. Print the nodes at odd levels of a tree
+
+
+def printoddlevels(rootnode, odd = True):
+    if (rootnode == None):
+        return
+    if (odd):
+        print(rootnode.data, end = " ")
+    printoddlevels(rootnode.left, not odd)
+    printoddlevels(rootnode.right, not odd)
+print("odd level nodes")
+printoddlevels(rootnode)
