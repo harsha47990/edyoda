@@ -140,7 +140,8 @@ X_test = torch.tensor([5], dtype=torch.float32)
 
 class LinearRegression(nn.Module):
     def __init__(self, input_dim, output_dim):
-        super(LinearRegression, self).__init__()
+        super(LinearRegression, self).__init__() #for older versions of python
+        #super().__init__() #for python 3+
         # define different layers
         self.lin = nn.Linear(input_dim, output_dim)
 
