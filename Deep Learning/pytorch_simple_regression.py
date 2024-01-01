@@ -41,7 +41,7 @@ for epoch in range(n_iters):
 
 
 
-#code 2
+#code 2 
 
 import torch
 import math
@@ -75,7 +75,6 @@ for t in range(2000):
     # loss.item() gets the scalar value held in the loss.
     loss = (y_pred - y).pow(2).sum()
     if t % 100 == 99:
-        print(id(a))
         print(t, loss.item())
 
     # Use autograd to compute the backward pass. This call will compute the
@@ -83,19 +82,25 @@ for t in range(2000):
     # After this call a.grad, b.grad. c.grad and d.grad will be Tensors holding
     # the gradient of the loss with respect to a, b, c, d respectively.
     loss.backward()
+
     # Manually update weights using gradient descent. Wrap in torch.no_grad()
     # because weights have requires_grad=True, but we don't need to track this
     # in autograd.
+    
+    # a -= learning_rate * a.grad
+    # b -= learning_rate * b.grad
+    # c -= learning_rate * c.grad
+    # d -= learning_rate * d.grad
+    with torch.no_grad():
+        a -= learning_rate * a.grad
+        b -= learning_rate * b.grad
+        c -= learning_rate * c.grad
+        d -= learning_rate * d.grad
 
-    a = a - learning_rate * a.grad
-    b = b - learning_rate * b.grad
-    c = c - learning_rate * c.grad
-    d = d - learning_rate * d.grad
-    # Manually zero the gradients after updating weights
-    a.grad = None
-    b.grad = None
-    c.grad = None
-    d.grad = None
+        # Manually zero the gradients after updating weights
+        a.grad = None
+        b.grad = None
+        c.grad = None
+        d.grad = None
 
 print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3')
-
