@@ -107,6 +107,14 @@ print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3'
 
 
 #code 3
+# A typical PyTorch pipeline looks like this:
+
+# Design model (input, output, forward pass with different layers)
+# Construct loss and optimizer
+# Training loop:
+# Forward = compute prediction and loss
+# Backward = compute gradients
+# Update weights
 
 import torch
 import torch.nn as nn
